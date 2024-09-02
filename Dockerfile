@@ -1,20 +1,11 @@
 FROM eclipse-temurin:21-jdk as build
-
-COPY . /app
-WORKDIR /app
-
-RUN chmod +x mvnw
-RUN ./mvnw package -DskipTests
-RUN mv -f target/*.jar app.jar
+COPY . .
+RUN mvn package -DskipTests
 
 FROM eclipse-temurin:21-jre
 
-ARG PORT
-ENV PORT=${PORT}
+COPY --from=build /target/moteteapp-0.0.1-SNAPSHOT.jar moteteapp.jar
 
-COPY --from=build /app/app.jar .
+EXPOSE 8080
 
-RUN useradd runtime
-USER runtime
-
-ENTRYPOINT [ "java", "-Dserver.port=${PORT}", "-jar", "app.jar" ]
+ENTRYPOINT [ "java", "-jar", "moteteapp.jar" ]

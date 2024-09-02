@@ -1,0 +1,7 @@
+com\firstaplicacion\moteteapp\MoteteappApplication.class
+com\firstaplicacion\moteteapp\controllers\ClientesController.class
+com\firstaplicacion\moteteapp\dto\ClienteDTO.class
+com\firstaplicacion\moteteapp\repository\ClientesRepository.class
+com\firstaplicacion\moteteapp\config\ClientesConfig.class
+com\firstaplicacion\moteteapp\models\Clientes.class
+com\firstaplicacion\moteteapp\services\ClientesService.class
